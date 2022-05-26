@@ -4,13 +4,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Rock Paper Scissors</title>
 </head>
 <body>
     <script>
         // PseudoCode
         // Create variables: r/p/s
-        // Computer picks random variable
+
+        const rock = 'rock'
+        const paper = 'paper'
+        const scissors = 'scissors'
+
+        let options = [rock, paper, scissors];
+
+        // Computer picks a random variable
+
+        let randOptions = options[Math.floor(Math.random() * options.length)];
+
+        function computerPlay() {
+            return randOptions
+        }
+        console.log(computerPlay())
+
         // User picks a variable (case insensitive)
         // Play one round and announce the winner
         // Repeat 5 times
