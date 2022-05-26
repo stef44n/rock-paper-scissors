@@ -9,7 +9,7 @@
 <body>
     <script>
         // PseudoCode
-        // Create variables: r/p/s
+        // 1. Create variables: r/p/s
 
         const rock = 'rock'
         const paper = 'paper'
@@ -17,19 +17,41 @@
 
         let options = [rock, paper, scissors];
 
-        // Computer picks a random variable
+        // 2. Computer picks a random variable
 
         let randOptions = options[Math.floor(Math.random() * options.length)];
 
         function computerPlay() {
             return randOptions
         }
-        console.log(computerPlay())
+        //console.log(computerPlay())
 
-        // User picks a variable (case insensitive)
-        // Play one round and announce the winner
-        // Repeat 5 times
-        // Store results and announce winner after 5 rounds
+        // 3. User picks a variable (case insensitive)
+
+        let userInput = prompt('Rock, Paper, or Scissors?', 'r/p/s')
+
+        function userPlay() {
+            return userInput.toLowerCase()
+        }
+        //console.log(userPlay())
+
+        function oneGame() {
+            if ((userPlay() === 'rock') || (userPlay() === 'r')) {
+                return rock;
+            } else if ((userPlay() === 'paper') || (userPlay() === 'p')) {
+                return paper;
+            } else if ((userPlay() === 'scissors') || (userPlay() === 's')) {
+                return scissors;
+            } else {
+                let newPrompt = 'Please select a valid answer'
+                return newPrompt;
+            }
+        }
+        console.log(oneGame())
+
+        // 4. Play one round and announce the winner
+        // 5. Repeat 5 times
+        // 6. Store results and announce winner after 5 rounds
     </script>
 </body>
 </html>
