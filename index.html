@@ -24,32 +24,53 @@
         function computerPlay() {
             return randOptions
         }
-        //console.log(computerPlay())
+        console.log(computerPlay())
 
         // 3. User picks a variable (case insensitive)
 
         let userInput = prompt('Rock, Paper, or Scissors?', 'r/p/s')
 
-        function userPlay() {
+        function userPick() {
             return userInput.toLowerCase()
         }
-        //console.log(userPlay())
+        //console.log(userPick())
 
-        function oneGame() {
-            if ((userPlay() === 'rock') || (userPlay() === 'r')) {
+        function userPlay() {
+            if ((userPick() === 'rock') || (userPick() === 'r')) {
                 return rock;
-            } else if ((userPlay() === 'paper') || (userPlay() === 'p')) {
+            } else if ((userPick() === 'paper') || (userPick() === 'p')) {
                 return paper;
-            } else if ((userPlay() === 'scissors') || (userPlay() === 's')) {
+            } else if ((userPick() === 'scissors') || (userPick() === 's')) {
                 return scissors;
             } else {
                 let newPrompt = 'Please select a valid answer'
                 return newPrompt;
             }
         }
-        console.log(oneGame())
+        //console.log(userPlay())
+
+        let playerSelection = userPlay()
+        let computerSelection = computerPlay()
+
+        let win = 'You win!'
+        let tie = 'It\'s a tie!'
+        let loss = 'You lose!'
 
         // 4. Play one round and announce the winner
+
+        function oneGame(){
+            if (playerSelection === computerSelection) {
+                return tie;
+            } else if (((playerSelection === 'rock') && (computerSelection === 'scissors')) || 
+            ((playerSelection === 'paper') && (computerSelection === 'rock')) ||
+            ((playerSelection === 'scissors') && (computerSelection === 'paper'))) {
+                return win;
+            } else {
+                return loss;
+            }
+        }
+        console.log(oneGame())
+
         // 5. Repeat 5 times
         // 6. Store results and announce winner after 5 rounds
     </script>
