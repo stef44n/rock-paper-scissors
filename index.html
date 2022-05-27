@@ -35,6 +35,8 @@
         }
         //console.log(userPick())
 
+        const invalidPick = 'Please select a valid answer'
+
         function userPlay() {
             if ((userPick() === 'rock') || (userPick() === 'r')) {
                 return rock;
@@ -43,11 +45,10 @@
             } else if ((userPick() === 'scissors') || (userPick() === 's')) {
                 return scissors;
             } else {
-                let newPrompt = 'Please select a valid answer'
-                return newPrompt;
+                return invalidPick;
             }
         }
-        //console.log(userPlay())
+        console.log(userPlay())
 
         let playerSelection = userPlay()
         let computerSelection = computerPlay()
@@ -58,7 +59,7 @@
 
         // 4. Play one round and announce the winner
 
-        function playRound() {
+        function playRound(playerSelection, computerSelection) {
             if (playerSelection === computerSelection) {
                 return tie;
             } else if (((playerSelection === 'rock') && (computerSelection === 'scissors')) || 
@@ -69,7 +70,7 @@
                 return loss;
             }
         }
-        console.log(playRound())
+        console.log(playRound(playerSelection, computerSelection))
 
         // 5. Repeat 5 times
         // 6. Store results and announce winner after 5 rounds
