@@ -58,7 +58,7 @@
 
         // 4. Play one round and announce the winner
 
-        function oneGame(){
+        function playRound() {
             if (playerSelection === computerSelection) {
                 return tie;
             } else if (((playerSelection === 'rock') && (computerSelection === 'scissors')) || 
@@ -69,7 +69,7 @@
                 return loss;
             }
         }
-        console.log(oneGame())
+        console.log(playRound())
 
         // 5. Repeat 5 times
         // 6. Store results and announce winner after 5 rounds
