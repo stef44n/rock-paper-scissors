@@ -44,15 +44,15 @@
             function computerPlay() {
                 return randOptions
             }
-            console.log(`Computer has picked: ${computerPlay()}`)
+            //console.log(`Computer has picked: ${computerPlay()}`)
 
             function userPlay() {
                 let userInput = prompt('Rock, Paper, or Scissors?', 'r/p/s')
 
                 function userPick() {
-                return userInput.toLowerCase()
+                    return userInput.toLowerCase()
                 }
-                console.log(`User has picked: ${userPick()}`)
+                //console.log(`User has picked: ${userPick()}`)
 
                 let userPICK = userPick();
 
@@ -83,11 +83,9 @@
                 return loseRound(); // invalid selection also returns a loss which is fair enough
             }
         }
-        console.log(`Your score is: ${playRound()}`)
-        console.log(`Games played: ${gamesPlayed}`)
-        console.log(`Current score: ${playerScore}`)
-
-        // 5. Repeat 5 times
+        //console.log(`Your score is: ${playRound()}`)
+        //console.log(`Games played: ${gamesPlayed}`)
+        //console.log(`Current score: ${playerScore}`)
 
         function winRound() {
             console.log(win);
@@ -107,18 +105,24 @@
             return playerScore += lossPoints;
         }
 
+        // 5. Repeat 5 times
+        // 6. Store results and announce winner after 5 rounds
+
         function game() {
             while (gamesPlayed < 5) {
-                console.log(`games played: ${gamesPlayed}`);
+                //console.log('***');
+                console.log(`Games played: ${gamesPlayed}`);
                 //console.log(gamesPlayed);
-                console.log(`player score: ${playerScore}`);
+                console.log(`Player score: ${playerScore}`);
+                console.log(`ROUND ${gamesPlayed + 1}`);
                 playRound();
             }
-            console.log('---------------')
+            console.log('--------------------');
+            console.log('***AFTER 5 ROUNDS***');
             if (playerScore > 0) {
                 console.log(`Congratulations, you WIN!!`);
                 console.log(`Final Score: ${playerScore}`);
-            } else if (playerScore = 0) {
+            } else if (playerScore === 0) {
                 console.log(`It\'s a TIE!`);
                 console.log(`Final Score: ${playerScore}`);
             } else {
@@ -127,11 +131,9 @@
             }
             return playerScore;
         }
-        console.log(`game: ${game()}`)
+        //console.log(`game: ${game()}`)
+        game()
 
-
- 
-        // 6. Store results and announce winner after 5 rounds
     </script>
 </body>
 </html>
