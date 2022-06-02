@@ -107,6 +107,28 @@
             return playerScore += lossPoints;
         }
 
+        function game() {
+            while (gamesPlayed < 5) {
+                console.log(`games played: ${gamesPlayed}`);
+                //console.log(gamesPlayed);
+                console.log(`player score: ${playerScore}`);
+                playRound();
+            }
+            console.log('---------------')
+            if (playerScore > 0) {
+                console.log(`Congratulations, you WIN!!`);
+                console.log(`Final Score: ${playerScore}`);
+            } else if (playerScore = 0) {
+                console.log(`It\'s a TIE!`);
+                console.log(`Final Score: ${playerScore}`);
+            } else {
+                console.log(`You LOSE`);
+                console.log(`Final Score: ${playerScore}`);
+            }
+            return playerScore;
+        }
+        console.log(`game: ${game()}`)
+
 
  
         // 6. Store results and announce winner after 5 rounds
