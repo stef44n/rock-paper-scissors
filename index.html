@@ -7,6 +7,11 @@
     <title>Rock Paper Scissors</title>
 </head>
 <body>
+    <button id="rock">rock</button>
+    <button id="paper">paper</button>
+    <button id="scissors">scissors</button>
+
+
     <script>
         // PseudoCode
         // 1. Create variables: r/p/s
@@ -38,6 +43,8 @@
 
         let gamesPlayed = 0;
 
+        userInput = '';
+
         function playRound() {
             let randOptions = options[Math.floor(Math.random() * options.length)];
 
@@ -47,14 +54,14 @@
             //console.log(`Computer has picked: ${computerPlay()}`)
 
             function userPlay() {
-                let userInput = prompt('Rock, Paper, or Scissors?', 'r/p/s')
+                // let userInput = prompt('Rock, Paper, or Scissors?', 'r/p/s')
 
-                function userPick() {
-                    return userInput.toLowerCase()
-                }
+                // function userPick() {
+                //     return userInput.toLowerCase()
+                // }
                 //console.log(`User has picked: ${userPick()}`)
 
-                let userPICK = userPick();
+                let userPICK = userInput;
 
                 if ((userPICK === 'rock') || (userPICK === 'r')) {
                     return rock;
@@ -109,14 +116,14 @@
         // 6. Store results and announce winner after 5 rounds
 
         function game() {
-            while (gamesPlayed < 5) {
-                //console.log('***');
-                console.log(`Games played: ${gamesPlayed}`);
-                //console.log(gamesPlayed);
-                console.log(`Player score: ${playerScore}`);
-                console.log(`ROUND ${gamesPlayed + 1}`);
-                playRound();
-            }
+            // while (gamesPlayed < 5) {
+            //     //console.log('***');
+            //     console.log(`Games played: ${gamesPlayed}`);
+            //     //console.log(gamesPlayed);
+            //     console.log(`Player score: ${playerScore}`);
+            //     console.log(`ROUND ${gamesPlayed + 1}`);
+            //     playRound();
+            // }
             console.log('--------------------');
             console.log('***AFTER 5 ROUNDS***');
             if (playerScore > 0) {
@@ -132,8 +139,24 @@
             return playerScore;
         }
         //console.log(`game: ${game()}`)
-        game()
+        //game()
 
+    </script>
+
+    <script>
+        // const roc = document.querySelector('button#rock');
+        // roc.addEventListener('click', function(e) {
+        //     console.log(e.target);
+        // });
+
+        const buttons = document.querySelectorAll('button');
+        buttons.forEach((button) => {
+            button.addEventListener('click', () => {
+                //console.log(button.id);
+                userInput = button.id;
+                playRound();
+            });
+        });
     </script>
 </body>
 </html>
