@@ -10,6 +10,9 @@
     <button id="rock">rock</button>
     <button id="paper">paper</button>
     <button id="scissors">scissors</button>
+    <div id="player-score">Player Score: <span id="p-s">0</span></div>
+    <div id="computer-score">Computer Score: <span id="c-s">0</span></div>
+    <div id="result"></div>
 
 
     <script>
@@ -52,6 +55,8 @@
                 return randOptions
             }
             //console.log(`Computer has picked: ${computerPlay()}`)
+            console.log(`Games played: ${gamesPlayed + 1}`)
+            //console.log(`Current score: ${playerScore}`)
 
             function userPlay() {
                 // let userInput = prompt('Rock, Paper, or Scissors?', 'r/p/s')
@@ -97,19 +102,33 @@
         function winRound() {
             console.log(win);
             gamesPlayed += 1;
-            return playerScore += winPoints;
+            playerScore += winPoints;
+            console.log(`P.S.: ${playerScore}`);
+            console.log(`C.S.: ${computerScore}`);
+
+            // const container = document.querySelector('#player-score');
+            // const userWins = document.createElement('span');
+            // userWins.textContent = playerScore;
+            //container.appendChild(userWins);
+            document.getElementById('p-s').textContent = playerScore;
         }
 
         function tieRound() {
             console.log(tie);
             gamesPlayed += 1;
-            return playerScore += tiePoints;
+            playerScore += tiePoints;
+            console.log(`P.S.: ${playerScore}`);
+            console.log(`C.S.: ${computerScore}`);
         }
 
         function loseRound() {
             console.log(loss);
             gamesPlayed += 1;
-            return playerScore += lossPoints;
+            computerScore += winPoints;
+            console.log(`P.S.: ${playerScore}`);
+            console.log(`C.S.: ${computerScore}`);
+
+            document.getElementById('c-s').textContent = computerScore;
         }
 
         // 5. Repeat 5 times
@@ -124,19 +143,29 @@
             //     console.log(`ROUND ${gamesPlayed + 1}`);
             //     playRound();
             // }
-            console.log('--------------------');
-            console.log('***AFTER 5 ROUNDS***');
-            if (playerScore > 0) {
-                console.log(`Congratulations, you WIN!!`);
-                console.log(`Final Score: ${playerScore}`);
-            } else if (playerScore === 0) {
-                console.log(`It\'s a TIE!`);
-                console.log(`Final Score: ${playerScore}`);
-            } else {
-                console.log(`You LOSE`);
-                console.log(`Final Score: ${playerScore}`);
+            // console.log('--------------------');
+            // console.log('***AFTER 5 ROUNDS***');
+            if (playerScore >= 5 && computerScore >= 5) {
+                console.log('GAME OVER');
+                document.getElementById('result').textContent = 'TRY AGAIN?';
+            } else if (playerScore >= 5 || computerScore >= 5) {
+                if (playerScore >= 5) {
+                    console.log(`Congratulations, you WIN!!`);
+                    console.log(`Final Score: ${playerScore}`);
+                    document.getElementById('result').textContent = `Congratulations, you WIN!!`;
+                    if (playerScore > 5) {
+                        document.getElementById('result').textContent = 'TRY AGAIN?';
+                    }
+                } else if (computerScore >= 5) {
+                    console.log(`You LOSE`);
+                    console.log(`Final Score: ${computerScore}`);
+                    document.getElementById('result').textContent = 'YOU LOSE';
+                    if (computerScore > 5) {
+                        document.getElementById('result').textContent = 'TRY AGAIN?';
+                    }
+                }
             }
-            return playerScore;
+            //return playerScore;
         }
         //console.log(`game: ${game()}`)
         //game()
@@ -144,19 +173,22 @@
     </script>
 
     <script>
-        // const roc = document.querySelector('button#rock');
-        // roc.addEventListener('click', function(e) {
-        //     console.log(e.target);
-        // });
-
         const buttons = document.querySelectorAll('button');
         buttons.forEach((button) => {
             button.addEventListener('click', () => {
-                //console.log(button.id);
+                console.log(button.id);
                 userInput = button.id;
                 playRound();
+                game();
             });
         });
+
+        // const container = document.querySelector('#player-score');
+
+        // const userWins = document.createElement('span');
+        // userWins.textContent = playerScore;
+
+        // container.append(userWins)
     </script>
 </body>
 </html>
