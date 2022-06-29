@@ -7,16 +7,19 @@
     <title>Rock Paper Scissors</title>
 </head>
 <body>
-    <button id="rock">rock</button>
-    <button id="paper">paper</button>
-    <button id="scissors">scissors</button>
-    <div id="player-score">Player Score: <span id="p-s">0</span></div>
-    <div id="computer-score">Computer Score: <span id="c-s">0</span></div>
-    <div id="result"></div>
-
+    <div class="container">
+        <div id="round">New Game</div>
+        <div>
+            <button id="rock">rock</button>
+            <button id="paper">paper</button>
+            <button id="scissors">scissors</button>
+        </div>
+        <div id="player-score">Player Score: <span id="p-s">0</span></div>
+        <div id="computer-score">Computer Score: <span id="c-s">0</span></div>
+        <div id="result"></div>
+    </div>
 
     <script>
-        // PseudoCode
         // 1. Create variables: r/p/s
 
         const rock = 'rock'
@@ -25,16 +28,11 @@
 
         let options = [rock, paper, scissors];
 
-        // 2. Computer picks a random variable
-
         const invalidPick = 'Please select a valid answer'
-
 
         let win = 'You win!'
         let tie = 'It\'s a tie!'
         let loss = 'You lose!'
-
-        // 4. Play one round and announce the winner
 
         let playerScore = 0;
         let computerScore = 0;
@@ -84,20 +82,20 @@
 
 
             if (playSel === compSel) {
-                return tieRound();
+                tieRound();
+                document.getElementById('round').textContent = `You and computer both chose ${playSel}! It\'s a tie!`;
             } else if (((playSel === 'rock') && (compSel === 'scissors')) || 
             ((playSel === 'paper') && (compSel === 'rock')) ||
             ((playSel === 'scissors') && (compSel === 'paper'))) {
-                return winRound();
+                winRound();
+                document.getElementById('round').textContent = `${playSel} beats ${compSel}! You win!`;
             //} else if (playSel === invalidPick) {
             //    return prompt('R/P/S?', ''); **this would need to loop back up to playRound and repeat - might update it later**
             } else {
-                return loseRound(); // invalid selection also returns a loss which is fair enough
+                loseRound(); // invalid selection also returns a loss which is fair enough
+                document.getElementById('round').textContent = `${compSel} beats ${playSel}! You lose!`;
             }
         }
-        //console.log(`Your score is: ${playRound()}`)
-        //console.log(`Games played: ${gamesPlayed}`)
-        //console.log(`Current score: ${playerScore}`)
 
         function winRound() {
             console.log(win);
@@ -130,9 +128,6 @@
 
             document.getElementById('c-s').textContent = computerScore;
         }
-
-        // 5. Repeat 5 times
-        // 6. Store results and announce winner after 5 rounds
 
         function game() {
             // while (gamesPlayed < 5) {
@@ -183,12 +178,10 @@
             });
         });
 
-        // const container = document.querySelector('#player-score');
+        const container = document.querySelector('.container');
+        container.setAttribute
+        ('style', 'display: flex; flex-direction: column; align-items:center; justify-content: center; height: 100vh; font-size: 35px')
 
-        // const userWins = document.createElement('span');
-        // userWins.textContent = playerScore;
-
-        // container.append(userWins)
     </script>
 </body>
 </html>
